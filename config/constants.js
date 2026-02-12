@@ -1,0 +1,34 @@
+export const HTTP_STATUS = {
+  OK: 200,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500,
+};
+
+export const TIMEOUTS = {
+  REQUEST: 30000,
+  CONNECTION: 10000,
+};
+
+export const SLEEP_DURATION = {
+  MIN: 0.5,
+  MAX: 2.0,
+  DEFAULT: 1.0,
+};
+
+export const RESPONSE_TIME_LIMITS = {
+  FAST: 500,
+  ACCEPTABLE: 1000,
+  SLOW: 2000,
+  CRITICAL: 3000,
+};
+
+export const ERROR_RATE_LIMITS = {
+  EXCELLENT: 0.001,
+  GOOD: 0.005,
+  ACCEPTABLE: 0.01,
+  CRITICAL: 0.05,
+};
+

@@ -1,0 +1,30 @@
+{
+  "name": "spacex-api-performance-tests",
+  "version": "1.0.0",
+  "description": "Testes de performance da API SpaceX usando K6",
+  "scripts": {
+    "test:simple": "k6 run scenarios/simple-test.js",
+    "test:load": "k6 run scenarios/load-test.js",
+    "test:stress": "k6 run scenarios/stress-test.js",
+    "test:spike": "k6 run scenarios/spike-test.js",
+    "test:all": "npm run test:simple && npm run test:load && npm run test:stress && npm run test:spike",
+    "test:simple:dashboard": "k6-dashboard.exe run --out web-dashboard scenarios/simple-test.js",
+    "test:load:dashboard": "k6-dashboard.exe run --out web-dashboard scenarios/load-test.js",
+    "test:stress:dashboard": "k6-dashboard.exe run --out web-dashboard scenarios/stress-test.js",
+    "test:spike:dashboard": "k6-dashboard.exe run --out web-dashboard scenarios/spike-test.js",
+    "test:all:dashboard": "k6-dashboard.exe run --out web-dashboard scenarios/simple-test.js && k6-dashboard.exe run --out web-dashboard scenarios/load-test.js && k6-dashboard.exe run --out web-dashboard scenarios/stress-test.js && k6-dashboard.exe run --out web-dashboard scenarios/spike-test.js"
+  },
+  "keywords": [
+    "k6",
+    "performance",
+    "testing",
+    "load-testing",
+    "spacex"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

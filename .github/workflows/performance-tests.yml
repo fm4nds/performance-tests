@@ -1,0 +1,42 @@
+name: Performance Tests
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  workflow_dispatch:
+
+jobs:
+  performance-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install K6
+        run: |
+          curl -L https://github.com/grafana/k6/releases/download/v0.48.0/k6-v0.48.0-linux-amd64.tar.gz -o k6.tar.gz
+          tar -xzf k6.tar.gz
+          sudo mv k6-v0.48.0-linux-amd64/k6 /usr/local/bin/k6
+          rm -rf k6.tar.gz k6-v0.48.0-linux-amd64
+          k6 version
+      
+      - name: Run simple performance test
+        run: npm run test:simple
+      
+      - name: Run load test
+        run: npm run test:load
+        continue-on-error: true
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            summary.json
+            results.json
+          retention-days: 7
+

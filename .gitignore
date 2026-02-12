@@ -1,0 +1,14 @@
+summary.json
+summary.txt
+results.json
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+node_modules/
+k6-dashboard.exe
+k6.exe
+
